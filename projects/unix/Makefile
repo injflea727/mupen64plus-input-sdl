@@ -25,7 +25,7 @@ UNAME ?= $(shell uname -s)
 OS := NONE
 ifeq ("$(UNAME)","Linux")
   OS = LINUX
-  SO_EXTENSION = so
+  SO_EXTENSION ?= so
   SHARED = -shared
 endif
 ifeq ("$(UNAME)","linux")
@@ -183,8 +183,8 @@ endif
 endif
 
 # set base program pointers and flags
-CC        = $(CROSS_COMPILE)gcc
-CXX       = $(CROSS_COMPILE)g++
+CC        ?= $(CROSS_COMPILE)gcc
+CXX       ?= $(CROSS_COMPILE)g++
 RM       ?= rm -f
 INSTALL  ?= install
 MKDIR ?= mkdir -p

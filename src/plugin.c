@@ -143,8 +143,10 @@ EXPORT m64p_error CALL PluginStartup(m64p_dynlib_handle CoreLibHandle, void *Con
     
     int i, ConfigAPIVersion, DebugAPIVersion, VidextAPIVersion;
 
+#if (!EMSCRIPTEN)
     if (l_PluginInit)
         return M64ERR_ALREADY_INIT;
+#endif
 
     /* first thing is to set the callback function for debug info */
     l_DebugCallback = DebugCallback;
